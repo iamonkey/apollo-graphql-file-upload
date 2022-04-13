@@ -66,6 +66,9 @@ const UploadForm = () => {
     
     
       const handleUpload = (event) => {
+
+        console.log(`env: ${process.env.REACT_APP_GRAPHQL_URL}`);
+
         if (event.target?.files[0]) {
           fileUpload({ variables: { 
             file: event.target?.files[0], 
