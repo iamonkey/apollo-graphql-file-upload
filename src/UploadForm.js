@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import React from "react";
 import { gql } from "@apollo/client";
-import { COMPANY_EMPLOYEE_UPLOAD } from "./uploadFilesQueries";
+import { COMPANY_CALIBRATION_UPLOAD, COMPANY_CALIBRATION_UPLOAD2, COMPANY_CALIBRATION_UPLOAD3, COMPANY_EMPLOYEE_UPLOAD, TALENT_REVIEW_UPLOAD } from "./uploadFilesQueries";
 
 export const CompanyFragments = {
   company: gql`
@@ -22,19 +22,60 @@ export const COMPANIES_QUERY = gql`
   ${CompanyFragments.company}
 `;
 
+/*
 const UploadForm = () => {
   const [fileUpload, fileUploadResponse] = useMutation(COMPANY_EMPLOYEE_UPLOAD, {
     onError: () => {},
   });
 
-  // useQuery(COMPANIES_QUERY);
-
 
   const handleUpload = (event) => {
     if (event.target?.files[0]) {
-      fileUpload({ variables: { file: event.target?.files[0], companyId:2, apply:true,  } });
+      fileUpload({ variables: { 
+        file: event.target?.files[0], 
+        apply:true, 
+        args: { companyId:2 }  
+        } 
+      });
     }
   };
+*/
+/*
+  const UploadForm = () => {
+    const [fileUpload, fileUploadResponse] = useMutation(COMPANY_CALIBRATION_UPLOAD2, {
+      onError: () => {},
+    });
+  
+  
+    const handleUpload = (event) => {
+      if (event.target?.files[0]) {
+        fileUpload({ variables: { 
+          file: event.target?.files[0], 
+          apply:true, 
+          args: { projectId:2, signOff:false }  
+          } 
+        });
+      }
+    };
+    
+*/
+    const UploadForm = () => {
+      const [fileUpload, fileUploadResponse] = useMutation(TALENT_REVIEW_UPLOAD, {
+        onError: () => {},
+      });
+    
+    
+      const handleUpload = (event) => {
+        if (event.target?.files[0]) {
+          fileUpload({ variables: { 
+            file: event.target?.files[0], 
+            apply:true, 
+            args: { projectId:2, sendEmail:false }  
+            } 
+          });
+        }
+      };
+      
 
   return (
     <>

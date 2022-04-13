@@ -10,7 +10,7 @@ const uploadLink = createUploadLink({
   headers: {
     "keep-alive": "true",
     Authorization:
-    "Bearer <ENTER BEARER TOKEN>",
+    "Bearer xxxx",
   },
 });
 
